@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<title>Consolidated Assessment Report</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#fff;color:#1f2933;}
+.main{max-width:1440px;margin:24px auto;padding:24px 32px;background:#fff;border-radius:10px;box-shadow:0 4px 24px rgba(15,23,42,0.10), 0 1.5px 6px rgba(15,23,42,0.06);}
+h1{font-weight:600;font-size:26px;margin:0 0 8px 0;color:#111827;}
+h2{font-weight:600;font-size:18px;margin:18px 0 8px 0;color:#111827;}
+h3{font-weight:600;font-size:15px;margin:16px 0 6px 0;color:#111827;}
+table{border-collapse:collapse;width:100%;margin:16px 0;background:#fff;}
+th,td{border:none;border-bottom:1px solid #e5e7eb;padding:8px 10px;font-size:13px;}
+th{text-align:left;color:#111827;font-weight:600;}
+.table-compact th,.table-compact td{padding:10px 16px;}
+.col-num{text-align:center;width:180px;}
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0;}
+.card{flex:1 1 180px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 1px 2px rgba(15,23,42,0.08);padding:10px 14px;}
+.card-title{font-size:13px;color:#111827;margin-bottom:4px;}
+.card-value{font-size:22px;font-weight:600;color:#111827;}
+.card-value.orange{color:#ea580c;}
+.card-value.red{color:#dc2626;}
+.section{background:#fff;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 1px 2px rgba(15,23,42,0.04);padding:12px 16px;margin:16px 0;}
+details.app-detail{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:10px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,0.04);}
+details.app-detail>summary{padding:8px 12px;cursor:pointer;font-weight:600;list-style:none;}
+details.app-detail[open]>summary{border-bottom:1px solid #e5e7eb;background:#f3f4ff;}
+.app-body{padding:10px 12px;}
+.muted{color:#6b7280;font-size:12px;}
+.grid-2{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0;}
+.grid-2 .panel{flex:1 1 260px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 1px 2px rgba(15,23,42,0.04);padding:12px 16px;}
+a{color:#2563eb;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.report-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+.report-header .header-left h1{margin:0 0 4px 0;}
+.report-header .header-left .subtitle{font-size:14px;color:#6b7280;margin:0;}
+.report-header .header-right{text-align:right;font-size:14px;color:#111827;line-height:1.7;}
+.nav-tabs{display:flex;gap:0;border-bottom:2px solid #e5e7eb;margin-bottom:20px;}
+.nav-tabs a{padding:10px 18px;font-size:14px;font-weight:500;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color 0.15s,border-color 0.15s;}
+.nav-tabs a:hover{color:#2563eb;border-bottom-color:#93c5fd;}
+.nav-tabs a.active{color:#2563eb;border-bottom-color:#2563eb;font-weight:600;}
+details.report-section{border:none;border-radius:0;margin:0 0 24px 0;background:transparent;box-shadow:none;}
+details.report-section>summary{padding:8px 12px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;margin-bottom:4px;border-radius:6px;transition:background 0.15s;}
+.section-header{flex:1;}
+details.report-section>summary:hover{background:#f3f4f6;}
+details.report-section>summary::before{content:'\276F';font-size:13px;color:#6b7280;transition:transform 0.2s;flex-shrink:0;}
+details.report-section[open]>summary::before{transform:rotate(90deg);}
+details.report-section[open]>summary{border-bottom:none;}
+.section-header .section-title{font-weight:600;font-size:18px;color:#111827;margin:0;}
+.section-header .section-desc{font-size:13px;color:#6b7280;margin:2px 0 0 0;}
+details.report-section .section-body{padding:0;}
+.badge{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:600;min-width:36px;text-align:center;}
+.badge-green{background:#dcfce7;color:#166534;}
+.badge-yellow{background:#fef9c3;color:#854d0e;}
+.badge-red{background:#fee2e2;color:#991b1b;}
+.badge-blue{background:#dbeafe;color:#1e40af;}
+.badge-orange{background:#ffedd5;color:#9a3412;}
+.badge-teal{background:#ccfbf1;color:#115e59;}
+.badge-num{display:inline-block;width:28px;height:28px;line-height:28px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;margin:0 2px;}
+.badge-num.m{background:#fee2e2;color:#991b1b;}
+.badge-num.p{background:#dbeafe;color:#1e40af;}
+.badge-num.o{background:#f3f4f6;color:#6b7280;}
+.matrix-legend{display:flex;gap:18px;font-size:13px;color:#374151;align-items:center;flex-shrink:0;}
+.matrix-legend span::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+.matrix-legend .leg-m::before{background:#dc2626;}
+.matrix-legend .leg-p::before{background:#2563eb;}
+.matrix-legend .leg-o::before{background:#9ca3af;}
+.callout{display:flex;align-items:flex-start;gap:10px;padding:14px 18px;border-radius:8px;border:1px solid #e5e7eb;background:#f9fafb;font-size:13px;color:#374151;margin:12px 0;}
+.callout-icon{flex-shrink:0;width:20px;height:20px;margin-top:1px;}
+.callout-icon svg{width:20px;height:20px;}
+.callout b{color:#111827;}
+td.col-num [title]{display:inline-block;width:100%;padding:4px 0;cursor:default;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.nav-tabs a').forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      document.querySelectorAll('.nav-tabs a').forEach(function(t){t.classList.remove('active');});
+      tab.classList.add('active');
+      var target=document.querySelector(tab.getAttribute('href'));
+      if(target){
+        if(target.tagName==='DETAILS') target.open=true;
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+});
+</script>
+</head><body><div class="main">
+<div class="report-header">
+  <div class="header-left">
+    <h1>Consolidated Assessment Report</h1>
+    <p class="subtitle">Code Assessment Summary</p>
+  </div>
+  <div class="header-right">
+    Assessment Date: April 15, 2026<br/>
+    Applications Assessed: 2
+  </div>
+</div>
+<nav class="nav-tabs">
+  <a href="#section-dashboard" class="active">Dashboard</a>
+  <a href="#section-recommendations">Recommendations</a>
+  <a href="#section-app-matrix">Application Assessment Matrix</a>
+</nav>
+<details class="report-section" id="section-dashboard" open>
+<summary><div class="section-header"><div class="section-title">Dashboard</div><div class="section-desc">High-level consolidation assessment of application health and cloud readiness across tech stacks.</div></div></summary>
+<div class="section-body">
+<div class="cards">
+  <div class="card"><div class="card-title">Total Apps</div><div class="card-value" title="ContosoUniversity
+dotnet4.8-SampleApp">2</div></div>
+  <div class="card"><div class="card-title">Upgrades Needed</div><div class="card-value orange" title="ContosoUniversity
+dotnet4.8-SampleApp">2</div></div>
+  <div class="card"><div class="card-title">Mandatory Blockers</div><div class="card-value red">1</div></div>
+  <div class="card"><div class="card-title">Potential Issues</div><div class="card-value">4</div></div>
+</div>
+<div class="grid-2">
+<div class="panel">
+<h3>Technology Distribution</h3>
+<table class="table-compact"><thead><tr><th>Framework</th><th class="col-num">Apps</th></tr></thead><tbody>
+<tr><td>.NET Framework 4.8</td><td class="col-num"><span title="ContosoUniversity
+dotnet4.8-SampleApp">2</span></td></tr>
+</tbody></table>
+</div>
+<div class="panel">
+<h3>Effort and Resource Summary</h3>
+<table class="table-compact"><thead><tr><th>Effort</th><th class="col-num">Apps</th></tr></thead><tbody>
+<tr><td>S</td><td class="col-num"><span title="dotnet4.8-SampleApp">1</span></td></tr>
+<tr><td>M</td><td class="col-num"><span title="ContosoUniversity">1</span></td></tr>
+<tr><td>L</td><td class="col-num"><span>0</span></td></tr>
+<tr><td>XL</td><td class="col-num"><span>0</span></td></tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</details>
+<details class="report-section" id="section-recommendations" open>
+<summary><div class="section-header"><div class="section-title">Recommendations</div><div class="section-desc">Key architectural decisions and recommended migration sequencing.</div></div></summary>
+<div class="section-body">
+<div class="callout"><span class="callout-icon"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="#2563eb" stroke-width="1.5"/><path d="M10 6v5" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r="0.75" fill="#2563eb"/></svg></span><span><b>Important:</b> These architectural recommendations represent key decision points required to move forward with migration. Review them now to avoid delays.</span></div>
+<h3>Recommended Azure Services</h3>
+<table><colgroup><col style="width:20%"/><col style="width:7%"/><col style="width:30%"/><col style="width:43%"/></colgroup><thead><tr><th>Dependency</th><th class="col-num">Apps</th><th>Recommendation</th><th>Rationale</th></tr></thead><tbody>
+<tr><td>Local Certificates</td><td class="col-num"><span title="ContosoUniversity
+dotnet4.8-SampleApp">2</span></td><td>Azure Key Vault</td><td>Azure Key Vault enables secure certificate lifecycle management with automated rotation and managed identity authentication.</td></tr>
+<tr><td>Local File System</td><td class="col-num"><span title="ContosoUniversity
+dotnet4.8-SampleApp">2</span></td><td>Azure Blob Storage</td><td>Azure Blob Storage replaces local file system dependencies with scalable, geo-redundant cloud storage accessible from any Azure service.</td></tr>
+<tr><td>Plaintext Credentials</td><td class="col-num"><span title="ContosoUniversity">1</span></td><td>Azure Key Vault with Managed Identity</td><td>Storing credentials in Azure Key Vault with managed identity eliminates plaintext secrets from code and configuration, improving security posture.</td></tr>
+<tr><td>SQL Server</td><td class="col-num"><span title="ContosoUniversity">1</span></td><td>Azure SQL Database</td><td>Azure SQL Database provides a fully managed SQL Server experience with built-in high availability, automatic backups, and managed identity authentication.</td></tr>
+<tr><td>Windows AD</td><td class="col-num"><span title="ContosoUniversity">1</span></td><td>Microsoft Entra ID</td><td>Microsoft Entra ID provides cloud-native identity and access management, replacing on-premises Windows AD with modern authentication protocols.</td></tr>
+</tbody></table>
+<h3>Recommended Target Platform</h3>
+<table><colgroup><col style="width:18%"/><col style="width:7%"/><col style="width:25%"/><col style="width:50%"/></colgroup><thead><tr><th>Recommendation</th><th class="col-num">Apps</th><th></th><th>Rationale</th></tr></thead><tbody>
+<tr><td>App Service MI</td><td class="col-num"><span title="ContosoUniversity
+dotnet4.8-SampleApp">2</span></td><td></td><td>Legacy .NET Framework application recommended for App Service with Managed Instance for Windows compatibility.</td></tr>
+</tbody></table>
+<h3>Recommended Upgrade Path</h3>
+<table><colgroup><col style="width:18%"/><col style="width:7%"/><col style="width:25%"/><col style="width:50%"/></colgroup><thead><tr><th>Framework</th><th class="col-num">Apps</th><th>Recommendation</th><th>Rationale</th></tr></thead><tbody>
+<tr><td>.NET Framework 4.8</td><td class="col-num"><span title="ContosoUniversity
+dotnet4.8-SampleApp">2</span></td><td>Migrate to .NET 10</td><td>.NET 10 is the latest LTS version supported by GitHub Copilot Modernization, enabling automated upgrades with minimal manual effort.</td></tr>
+</tbody></table>
+<h3>Migration Wave Plan</h3>
+<table><colgroup><col style="width:18%"/><col style="width:32%"/><col style="width:50%"/></colgroup><thead><tr><th>Phase</th><th>Applications</th><th>Rationale</th></tr></thead><tbody>
+<tr><td>Wave 1 - Quick Wins</td><td>-</td><td>Quick Wins — migrate now with minimal effort and risk. Fewer than 5 mandatory issues, no version upgrade issues.</td></tr>
+<tr><td>Wave 2 - Core Cloud</td><td>ContosoUniversity, dotnet4.8-SampleApp</td><td>Moderate effort — applications that do not qualify as quick wins or long-term bets.</td></tr>
+<tr><td>Wave 3 - Long term Bets</td><td>-</td><td>Long-term Bets — more than 10 mandatory issues and has version upgrade issues requiring significant framework migration.</td></tr>
+</tbody></table>
+</div>
+</details>
+<details class="report-section" id="section-app-matrix" open>
+<summary><div class="section-header"><div class="section-title">Application Assessment Matrix</div><div class="section-desc">Detailed framework upgrade plan with readiness assessment and migration requirements.</div></div><div class="matrix-legend"><span class="leg-m">M = Mandatory</span><span class="leg-p">P = Potential</span><span class="leg-o">O = Optional</span></div></summary>
+<div class="section-body">
+<table><thead><tr><th>Application</th><th>Framework</th><th>Recommended target platform</th><th>Upgrade recommendation</th><th>Issues (M/P/O)</th><th>Effort</th><th>Decision</th></tr></thead><tbody>
+<tr><td><a href="./app-contosouniversity.html" style="font-weight:600">ContosoUniversity</a></td><td>.NET Framework 4.8</td><td>App Service MI</td><td>Migrate to .NET 10</td><td><span class="badge-num m">1</span><span class="badge-num p">2</span><span class="badge-num o">3</span></td><td>M</td><td>Blocked</td></tr>
+<tr><td><a href="./app-dotnet4-8-sampleapp.html" style="font-weight:600">dotnet4.8-SampleApp</a></td><td>.NET Framework 4.8</td><td>App Service MI</td><td>Migrate to .NET 10</td><td><span class="badge-num m">0</span><span class="badge-num p">2</span><span class="badge-num o">1</span></td><td>S</td><td>Ready</td></tr>
+</tbody></table>
+</div>
+</details>
+<p class="muted" style="text-align:center;margin-top:24px;">Your feedback is invaluable &mdash; <a href="https://aka.ms/ghcp-appmod/feedback">Share your thoughts</a></p>
+</div></body></html>

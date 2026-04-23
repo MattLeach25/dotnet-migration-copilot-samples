@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<title>Assessment - ContosoUniversity</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#fff;color:#1f2933;}
+.main{max-width:1440px;margin:24px auto;padding:24px 32px;background:#fff;border-radius:10px;box-shadow:0 4px 24px rgba(15,23,42,0.10), 0 1.5px 6px rgba(15,23,42,0.06);}
+h1{font-weight:600;font-size:24px;margin:0 0 8px 0;color:#111827;}
+h2{font-weight:600;font-size:18px;margin:18px 0 8px 0;color:#111827;}
+table{border-collapse:collapse;width:100%;margin:16px 0;background:#fff;}
+th,td{border:none;border-bottom:1px solid #e5e7eb;padding:8px 10px;font-size:13px;}
+th{text-align:left;color:#111827;font-weight:600;}
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 20px 0;}
+.card{flex:1 1 220px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 1px 2px rgba(15,23,42,0.08);padding:10px 14px;}
+.card-title{font-size:13px;color:#111827;margin-bottom:4px;}
+.card-value{font-size:22px;font-weight:600;color:#111827;}
+.muted{color:#6b7280;font-size:13px;}
+a{color:#2563eb;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.crit-badge{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:500;text-align:center;}
+.crit-mandatory{border:1px solid #dc2626;color:#dc2626;}
+.crit-potential{border:1px solid #2563eb;color:#2563eb;}
+.crit-optional{border:1px solid #6b7280;color:#6b7280;}
+details.issue-row{margin:0;}
+details.issue-row>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;}
+details.issue-row>summary::before{content:'\276F';font-size:11px;color:#6b7280;transition:transform 0.2s;flex-shrink:0;}
+details.issue-row[open]>summary::before{transform:rotate(90deg);}
+.incident-table{margin:8px 0 4px 20px;width:auto;}
+.incident-table th,.incident-table td{font-size:13px;padding:6px 8px;color:#374151;}
+</style></head><body><div class="main">
+<p class="muted"><a href="./index.html">&#8592; Back to aggregate dashboard</a></p>
+<h1>ContosoUniversity</h1>
+<div class="cards">
+  <div class="card"><div class="card-title">Total Issues</div><div class="card-value">6</div></div>
+  <div class="card"><div class="card-title">Mandatory Blockers</div><div class="card-value">1</div></div>
+  <div class="card"><div class="card-title">Potential Issues</div><div class="card-value">2</div></div>
+</div>
+<h2>Application Information</h2>
+<table><colgroup><col style="width:30%"/><col style="width:70%"/></colgroup><tbody>
+<tr><td style="font-weight:600">Language</td><td>C#</td></tr>
+<tr><td style="font-weight:600">Frameworks</td><td>.NETFramework,Version=v4.8</td></tr>
+<tr><td style="font-weight:600">Build tools</td><td>MSBuild</td></tr>
+</tbody></table>
+<h2>Cloud Readiness Issues</h2>
+<table><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><thead><tr><th>Issue Name</th><th>Criticality</th><th>Story Point</th></tr></thead><tbody>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">Windows authentication detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-mandatory">Mandatory</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">3</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>Web.config</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">Certificate management dependency detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-potential">Potential</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">5</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>ContosoUniversity.csproj</td><td>N/A</td></tr>
+<tr><td>ContosoUniversity.csproj</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">SQL database connection detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-potential">Potential</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">3</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>Web.config</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">Connection strings without configuration builders detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-optional">Optional</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">3</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>Web.config</td><td>N/A</td></tr>
+<tr><td>Web.config</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">Static content detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-optional">Optional</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">3</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>ContosoUniversity.csproj</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+<tr><td colspan="3" style="padding:0;border-bottom:none;">
+<details class="issue-row">
+<summary>
+<table style="margin:0;width:100%;border:none;"><colgroup><col style="width:50%"/><col style="width:25%"/><col style="width:25%"/></colgroup><tr style="border:none;"><td style="border:none;border-bottom:1px solid #e5e7eb;">System.Data.SqlClient dependency detected</td><td style="border:none;border-bottom:1px solid #e5e7eb;"><span class="crit-badge crit-optional">Optional</span></td><td style="border:none;border-bottom:1px solid #e5e7eb;">3</td></tr></table>
+</summary>
+<table class="incident-table"><thead><tr><th>File</th><th>Line</th></tr></thead><tbody>
+<tr><td>Web.config</td><td>N/A</td></tr>
+</tbody></table>
+</details>
+</td></tr>
+</tbody></table>
+<p class="muted" style="text-align:center;margin-top:24px;">Your feedback is invaluable &mdash; <a href="https://aka.ms/ghcp-appmod/feedback">Share your thoughts</a></p>
+</div></body></html>
