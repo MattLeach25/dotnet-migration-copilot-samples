@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Tasks template for modernization plan. Generate this file alongside plan.md to track individual migration tasks.",
+  "tasks": [
+    {
+      "type": "containerization",
+      "id": "001-containerize-contosouniversity",
+      "description": "Create a Dockerfile to containerize the ContosoUniversity ASP.NET MVC 5 application targeting .NET Framework 4.8 using a Windows-based container image.",
+      "requirements": "Create a multi-stage Dockerfile for ContosoUniversity located at ContosoUniversity/ContosoUniversity.csproj. The application targets .NET Framework 4.8 and must use a Windows-based base image (mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2022). The build stage should use mcr.microsoft.com/dotnet/framework/sdk:4.8 to compile and publish the application using MSBuild. The final image should copy the published output into the IIS-hosted ASP.NET base image. Include a .dockerignore file to exclude unnecessary files from the build context.",
+      "environmentConfiguration": null,
+      "dockerfilePath": "ContosoUniversity/Dockerfile",
+      "status": "success",
+      "summary": "Created ContosoUniversity/Dockerfile (multi-stage: sdk:4.8 build stage + aspnet:4.8-windowsservercore-ltsc2022 final stage) and ContosoUniversity/.dockerignore.",
+      "successCriteriaStatus": "passed"
+    },
+    {
+      "type": "containerization",
+      "id": "002-containerize-descopesampleapp",
+      "description": "Create a Dockerfile to containerize the DescopeSampleApp ASP.NET Core application targeting .NET 9.0 using a Linux-based container image.",
+      "requirements": "Create a multi-stage Dockerfile for DescopeSampleApp located at DescopeSampleApp/DescopeSampleApp.csproj. The application targets net9.0 and should use a Linux-based base image (mcr.microsoft.com/dotnet/aspnet:9.0). The build stage should use mcr.microsoft.com/dotnet/sdk:9.0 to restore, build, and publish the application. The final image should copy the published output and set the entrypoint to dotnet DescopeSampleApp.dll. Include a .dockerignore file to exclude unnecessary files from the build context.",
+      "environmentConfiguration": null,
+      "dockerfilePath": "DescopeSampleApp/Dockerfile",
+      "status": "skipped",
+      "summary": "Skipped: DescopeSampleApp project directory does not exist in this repository. No Dockerfile was created.",
+      "successCriteriaStatus": "skipped"
+    }
+  ],
+  "metadata": {
+    "planName": "containerize-contoso",
+    "projectName": "ContosoUniversity & DescopeSampleApp",
+    "language": "dotnet",
+    "createdAt": "2026-04-23T11:12:24.529Z",
+    "version": "1.0"
+  }
+}

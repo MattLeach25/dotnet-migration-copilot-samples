@@ -1,0 +1,25 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet packages (restored during build)
+packages/
+
+# Logs and temp files
+*.log
+*.tmp
+[Ll]ogs/
+
+# Node modules
+node_modules/
+
+# Test results
+TestResults/
+*.trx
