@@ -18,6 +18,8 @@ builder.Services.AddDbContext<SchoolContext>(options =>
 
 builder.Services.AddSingleton<ContosoUniversity.Services.IBlobStorageService, ContosoUniversity.Services.AzureBlobStorageService>();
 
+builder.Services.AddResponseCaching();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -25,7 +27,15 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 
-app.UseStaticFiles();
+app.UseStaticFiles(new Microsoft.AspNetCore.Builder.StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        // Cache static files for 7 days
+        ctx.Context.Response.Headers["Cache-Control"] = "public,max-age=604800";
+    }
+});
+app.UseResponseCaching();
 app.UseRouting();
 app.UseAuthorization();
 
