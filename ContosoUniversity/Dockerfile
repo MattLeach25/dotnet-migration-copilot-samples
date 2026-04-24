@@ -1,19 +1,30 @@
 # Build stage
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
-WORKDIR C:\\app
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
 
-COPY packages.config .
-COPY ContosoUniversity.csproj .
+COPY ["ContosoUniversity.csproj", "./"]
+RUN dotnet restore "ContosoUniversity.csproj"
+
 COPY . .
-
-RUN nuget restore ContosoUniversity.csproj
-
-RUN msbuild ContosoUniversity.csproj /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl=C:\\publish /p:DeleteExistingFiles=True
+RUN dotnet publish "ContosoUniversity.csproj" -c Release -o /app/publish --no-restore
 
 # Runtime stage
-FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8 AS runtime
-WORKDIR C:\\inetpub\\wwwroot
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+WORKDIR /app
 
-EXPOSE 80
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_URLS=http://+:8080
 
-COPY --from=build C:/publish .
+EXPOSE 8080
+
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+
+COPY --from=build /app/publish .
+
+RUN chown -R appuser:appgroup /app
+USER appuser
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:8080/health || exit 1
+
+ENTRYPOINT ["dotnet", "ContosoUniversity.dll"]
