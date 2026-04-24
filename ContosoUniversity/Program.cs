@@ -16,6 +16,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<SchoolContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddSingleton<ContosoUniversity.Services.IBlobStorageService, ContosoUniversity.Services.AzureBlobStorageService>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
